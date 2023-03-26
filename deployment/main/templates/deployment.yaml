@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fern-project-main
+  labels:
+    app: fern-project-main
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fern-project-main
+  template:
+    metadata:
+      labels:
+        app: fern-project-main
+    spec:
+      containers:
+      - name: fern-project-main
+        image: fernprojectacr.azurecr.io/fern-test-app:v2
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ENVIRONMENT
+          value: "prod"
