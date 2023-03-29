@@ -2,14 +2,20 @@ package controllers
 
 import (
     "net/http"
-    "time"
     "encoding/json"
     "main/model"
     "github.com/gorilla/mux"
 )
 
-type PetitionController struct{}
+type PetitionController struct{
+	petitions map[string]model.Petition
+}
 
+func NewPetitionController() *PetitionController {
+    return &PetitionController{
+        petitions: make(map[string]model.Petition),
+    }
+}
 
 func (c *PetitionController) GetPetition(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
@@ -17,13 +23,7 @@ func (c *PetitionController) GetPetition(w http.ResponseWriter, r *http.Request)
 
 	// TODO: code to fetch the petition from the database
     //TODO: make time.Now() default
-	petition := model.Petition{
-        CreatedAt:     model.DateTime(time.Now()),
-        Description:   "fern sux",
-        Categories:    []string{"hiking", "cooking", "reading"},
-        Image:         "",
-        ID:            petitionId,
-	}
+	petition := c.petitions[petitionId]
 
 	// Serialize the petition object to JSON
 	jsonData, err := json.Marshal(petition)
@@ -46,7 +46,7 @@ func (c *PetitionController) CreatePetition(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	// TODO: code to create the petition in the database
+	c.petitions[petition.ID] = petition
 
 	// Serialize the user object to JSON
 	jsonData, err := json.Marshal(petition)

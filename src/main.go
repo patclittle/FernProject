@@ -14,7 +14,7 @@ func main() {
     log.Println("Hello, world!")
 
 	// Create controller
-	petitionController := &controllers.PetitionController{}
+	petitionController := controllers.NewPetitionController()
 
 	// Create a new router
     router := mux.NewRouter()
