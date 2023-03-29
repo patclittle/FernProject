@@ -1,7 +1,7 @@
 #!/bin/bash
 
 imgName="fern-test-app"
-imgTag="v2"
+imgTag="v3"
 acrName="fernprojectacr"
 
 echo "Building docker file ${imgName}:${imgTag} and pushing to ${acrName}"

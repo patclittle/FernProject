@@ -5,4 +5,4 @@ helm install main .
 usleep 1000000
 
 echo "Go to http://localhost/ideas to try it out!"
-kubectl port-forward fern-project-main-68df48ccb4-ltmng 8080:8080
+kubectl port-forward fern-project-main-574ccc7bdc-zh48l-ltmng 8080:8080

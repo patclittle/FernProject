@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: fern-project-main
-        image: fernprojectacr.azurecr.io/fern-test-app:v2
+        image: fernprojectacr.azurecr.io/fern-test-app:v3
         ports:
         - containerPort: 8080
         env:

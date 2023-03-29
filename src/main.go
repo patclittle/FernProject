@@ -12,19 +12,17 @@ import (
 func main() {
 
     log.Println("Hello, world!")
-	
+
 	// Create controller
-	controller := &controllers.TestController{}
-	ideaController := &controllers.IdeaController{}
+	petitionController := &controllers.PetitionController{}
 
 	// Create a new router
     router := mux.NewRouter()
-
-	// Register the home route
-    router.HandleFunc("/", controller.GetHomePageText)
 	
 	// Register other routes
-	router.HandleFunc("/ideas", ideaController.GetIdeas)
+	router.HandleFunc("/petitions/{petitionId}", petitionController.GetPetition).Methods("GET")
+	router.HandleFunc("/petitions", petitionController.CreatePetition).Methods("POST")
+
 
 	// Start the server
     log.Fatal(http.ListenAndServe(":8080", router))
