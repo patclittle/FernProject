@@ -1,9 +1,14 @@
 package model
 
 type Petition struct {
-    CreatedAt    DateTime `json:"createdAt"`
-	Description  string   `json:"description"`
-    Categories   []string `json:"categories"`
-    Image        string   `json:"image"`
-	ID			 string   `json:"id"`
+	CreatedAt   DateTime `json:"createdAt,omitempty"`
+	Description string   `json:"description,omitempty"`
+	Categories  []string `json:"categories,omitempty"`
+	Image       string   `json:"image,omitempty"`
+	ID          string   `json:"id,omitempty"`
+	RelatedTo   []string `json:"relatedTo,omitempty"`
+	Upvotes     int      `json:"upvotes,omitempty"`
+	Downvotes   int      `json:"downvotes,omitempty"`
+	Comments    []string `json:"comments,omitempty"`
+	NeedsInfo   int      `json:"needsInfo,omitempty"`
 }
